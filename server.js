@@ -1,7 +1,9 @@
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Call Nora, Reinhart.\n');
-}).listen(8000);
+var express = require('express'),
+    app = express();
 
-console.log('Server running at http://0.0.0.0:8000/');
+app.get('/', function(req, res){
+    res.send('Call Nora, Reinhart.');
+});
+
+var server = app.listen(3000);
+console.log('Express server started on port %s', server.address().port);
