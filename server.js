@@ -6,5 +6,3 @@ app.get('/', function(req, res){
 });
 
 var server = app.listen(3000);
-console.log('Express server started on port %s', server.address().port);
-
