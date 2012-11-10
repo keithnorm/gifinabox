@@ -2,6 +2,9 @@
   "name": "nko3-just-name-it-beansna",
   "version": "0.0.0-8",
   "description": "Just Name it Beansnappers",
+  "scripts": {
+    "start": "coffee server.coffee"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:nko3/just-name-it-beansna.git"
