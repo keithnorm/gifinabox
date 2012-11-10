@@ -14,9 +14,3 @@ app.use express.static __dirname + '/public'
 app.get '/', controller.index
 
 server = app.listen(3000)
-
-fs.writeFile './public/helloworld.txt', 'Hello World!', (err) ->
-  if (err) 
-    return console.log(err)
-  console.log('Hello World > helloworld.txt')
-
