@@ -173,9 +173,6 @@
           writePixels(); // encode and write pixel data
           firstFrame = false;
         } catch (e/*Error*/) {
-
-          console.log("CAUGHT AN ERROR!");
-
           ok = false;
         }
         
@@ -266,9 +263,6 @@
     
     var setSize = exports.setSize = function setSize(w/*int*/, h/*int*/)/*void*/
     {
-      
-      console.log("ZOMG", w, h)
-
       if (started && !firstFrame) return;
         width = w;
         height = h;

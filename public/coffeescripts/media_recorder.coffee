@@ -22,17 +22,15 @@ class window.MediaRecorder
     @_setupVideo()
 
   start: ->
-    console.log("#record")
-    @currentRafId = requestAnimationFrame(@_drawVideoFrame)
-
     @encoder = new GIFEncoder()
     @encoder.setSize(@width, @height)
     @encoder.setRepeat(100000)
     @encoder.setQuality(20)
     @encoder.start()
 
+    @currentRafId = requestAnimationFrame(@_drawVideoFrame)
+
   stop: ->
-    console.log("#stop", @frames)
     cancelAnimationFrame(@currentRafId)
     @encoder.finish()
 
@@ -45,15 +43,9 @@ class window.MediaRecorder
   _drawVideoFrame: =>
     @currentRafId = requestAnimationFrame(@_drawVideoFrame)
     @ctx.drawImage(@video, 0, 0, @width, @height)
-
-    console.log "adding frame"
     @encoder.addFrame(@ctx)
 
-    @frames.push(@canvas.toDataURL('image/png', 1))
-
   _setupVideo: =>
-    console.log("#_setupVideo")
-
     navigator.getUserMedia { video: true }, (stream) =>
       @video.src = URL.createObjectURL(stream)
       @ctx.drawImage(@video, 0, 0, @canvas.width, @canvas.height)
