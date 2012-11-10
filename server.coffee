@@ -26,6 +26,7 @@ process.nextTick ->
 
 app.use express.static __dirname + '/public'
 
-app.get '/', controller.index
+app.get '/', (req, res) ->
+  res.render 'index.jade', {gifs: gifs}
 
 server = app.listen(3000)
