@@ -1,11 +1,12 @@
 extends layout
 
 block content
-  video(autoplay=true)
-  canvas
-  img#gif
-  button(id="record") Record
-  button(id="stop") ◼
+  #recorder
+    video(autoplay=true)
+    canvas
+    img#gif
+    button(id="record") Record
+    button(id="stop") ◼
 
   - each gif in gifs
     img(src="#{gif}")
