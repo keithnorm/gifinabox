@@ -6,3 +6,6 @@ block content
   img#gif
   button(id="record") Record
   button(id="stop") ◼
+
+  - each gif in gifs
+    img(src="#{gif}")
