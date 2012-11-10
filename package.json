@@ -1,6 +1,6 @@
 {
   "name": "nko3-just-name-it-beansna",
-  "version": "0.0.0-3",
+  "version": "0.0.0-4",
   "description": "Just Name it Beansnappers",
   "main": "server.js",
   "scripts": {
@@ -10,7 +10,9 @@
     "type": "git",
     "url": "git@github.com:nko3/just-name-it-beansna.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "express": "*"
+  },
   "engines": {
     "node": "0.8.x"
   },
