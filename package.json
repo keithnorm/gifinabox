@@ -1,11 +1,7 @@
 {
   "name": "nko3-just-name-it-beansna",
-  "version": "0.0.0-6",
+  "version": "0.0.0-8",
   "description": "Just Name it Beansnappers",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
   "repository": {
     "type": "git",
     "url": "git@github.com:nko3/just-name-it-beansna.git"
