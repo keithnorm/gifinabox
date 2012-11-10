@@ -4,6 +4,5 @@ video {
 }
 
 canvas {
-  height: 240px;
-  width: 320px;
+  display: none
 }
