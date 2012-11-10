@@ -4,13 +4,16 @@
     var recorder;
     recorder = new MediaRecorder({
       video: $("video")[0],
-      canvas: $("canvas")[0]
+      canvas: $("canvas")[0],
+      height: 240,
+      width: 320
     });
     $("#record").click(function() {
       return recorder.start();
     });
     return $("#stop").click(function() {
-      return recorder.stop();
+      recorder.stop();
+      return $("#gif").attr('src', recorder.dataURL());
     });
   });
 

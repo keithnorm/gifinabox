@@ -9,10 +9,12 @@ class window.MediaRecorder
   constructor: (opts) ->
     @video = opts.video
     @canvas = opts.canvas
-    @ctx = @canvas.getContext('2d')
+    @height = opts.height
+    @width = opts.width
 
-    @CANVAS_WIDTH = @canvas.width
-    @CANVAS_HEIGHT = @canvas.height
+    @canvas.height = @height
+    @canvas.width = @width
+    @ctx = @canvas.getContext('2d')
 
     @currentRafId = null
     @frames = []
@@ -23,13 +25,30 @@ class window.MediaRecorder
     console.log("#record")
     @currentRafId = requestAnimationFrame(@_drawVideoFrame)
 
+    @encoder = new GIFEncoder()
+    @encoder.setSize(@width, @height)
+    @encoder.setRepeat(100000)
+    @encoder.setQuality(20)
+    @encoder.start()
+
   stop: ->
     console.log("#stop", @frames)
     cancelAnimationFrame(@currentRafId)
+    @encoder.finish()
+
+  dataURL: ->
+    "data:image/gif;base64,#{ @_rawDataURL() }"
+
+  _rawDataURL: ->
+    $.base64.encode(@encoder.stream().getData())
 
   _drawVideoFrame: =>
     @currentRafId = requestAnimationFrame(@_drawVideoFrame)
-    @ctx.drawImage(@video, 0, 0, @CANVAS_WIDTH, @CANVAS_HEIGHT)
+    @ctx.drawImage(@video, 0, 0, @width, @height)
+
+    console.log "adding frame"
+    @encoder.addFrame(@ctx)
+
     @frames.push(@canvas.toDataURL('image/png', 1))
 
   _setupVideo: =>

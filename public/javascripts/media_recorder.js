@@ -21,9 +21,11 @@
       this._setupVideo = __bind(this._setupVideo, this);
       this._drawVideoFrame = __bind(this._drawVideoFrame, this);      this.video = opts.video;
       this.canvas = opts.canvas;
+      this.height = opts.height;
+      this.width = opts.width;
+      this.canvas.height = this.height;
+      this.canvas.width = this.width;
       this.ctx = this.canvas.getContext('2d');
-      this.CANVAS_WIDTH = this.canvas.width;
-      this.CANVAS_HEIGHT = this.canvas.height;
       this.currentRafId = null;
       this.frames = [];
       this._setupVideo();
@@ -31,17 +33,33 @@
 
     MediaRecorder.prototype.start = function() {
       console.log("#record");
-      return this.currentRafId = requestAnimationFrame(this._drawVideoFrame);
+      this.currentRafId = requestAnimationFrame(this._drawVideoFrame);
+      this.encoder = new GIFEncoder();
+      this.encoder.setSize(this.width, this.height);
+      this.encoder.setRepeat(100000);
+      this.encoder.setQuality(20);
+      return this.encoder.start();
     };
 
     MediaRecorder.prototype.stop = function() {
       console.log("#stop", this.frames);
-      return cancelAnimationFrame(this.currentRafId);
+      cancelAnimationFrame(this.currentRafId);
+      return this.encoder.finish();
+    };
+
+    MediaRecorder.prototype.dataURL = function() {
+      return "data:image/gif;base64," + (this._rawDataURL());
+    };
+
+    MediaRecorder.prototype._rawDataURL = function() {
+      return $.base64.encode(this.encoder.stream().getData());
     };
 
     MediaRecorder.prototype._drawVideoFrame = function() {
       this.currentRafId = requestAnimationFrame(this._drawVideoFrame);
-      this.ctx.drawImage(this.video, 0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
+      this.ctx.drawImage(this.video, 0, 0, this.width, this.height);
+      console.log("adding frame");
+      this.encoder.addFrame(this.ctx);
       return this.frames.push(this.canvas.toDataURL('image/png', 1));
     };
 
