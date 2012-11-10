@@ -18,7 +18,6 @@ reloader :
 # browser tab will also reload once the server comes up
 # (*) rbbe = reload-browser browser extension, see: https://github.com/quackingduck/reload-browser/downloads
 dev-reload-server :
-	exit
 	RELOAD_BROWSER_ON_LISTEN=yes ./env.sh ./node_modules/wach/bin/wachs \
 		-o server.coffee,./views/* \
 		coffee server.coffee
