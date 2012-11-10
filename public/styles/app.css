@@ -2,7 +2,12 @@ video {
   height: 240px;
   width: 320px;
 }
-
 canvas {
-  display: none
+  display: none;
+}
+#gifs {
+  list-style: none;
+}
+#gifs li {
+  float: left;
 }

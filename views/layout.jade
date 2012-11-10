@@ -12,11 +12,12 @@ html(lang="en")
     script(type='text/javascript', src='/javascripts/libraries/NeuQuant.js')
     script(type='text/javascript', src='/javascripts/libraries/GIFEncoder.js')
     script(type='text/javascript', src='/javascripts/media_recorder.js')
+    script(type='text/javascript', src='/javascripts/jquery.masonry.js')
     script(type='text/javascript', src='/javascripts/namespace.js')
     script(type='text/javascript', src='/javascripts/views/recorder.js')
     script(type='text/javascript', src='/javascripts/app.js')
   body
-    header
+    header.row
       h1 Ye Olde Gifster
-    block content
-
+    #main.row
+      block content

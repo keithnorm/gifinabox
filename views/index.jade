@@ -8,5 +8,7 @@ block content
     button(id="record") Record
     button(id="stop") ◼
 
-  - each gif in gifs
-    img(src="#{gif}")
+  ul#gifs.row
+    - each gif in gifs
+      li 
+        img(src="#{gif}")

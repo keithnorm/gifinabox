@@ -22,6 +22,7 @@ process.nextTick ->
         $ = window.$
         imgs = $('.event-item-lol-image').map (i, el) ->
           $(el).attr('src')
+        console.log 'got page', p
         gifs.push.apply(gifs, imgs)
 
 app.use express.static __dirname + '/public'

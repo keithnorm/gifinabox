@@ -12,7 +12,8 @@ dev-rebuild-db :
 
 reloader :
 	make dev-reload-server &
-	./node_modules/coffee-script/bin/coffee -wo ./public/javascripts/ ./public/coffeescripts/
+	./node_modules/coffee-script/bin/coffee -wo ./public/javascripts/ ./public/coffeescripts/ &
+	./node_modules/stylus/bin/stylus -w -o public/styles/ public/styles/src/
 
 # Restarts the server when a file changes, if rbbe (*) is installed the active
 # browser tab will also reload once the server comes up
