@@ -15,7 +15,7 @@ mongoose.connect('mongodb://nodejitsu_nko3-just-name-it-beansna:22s0te0hc7ubqoim
 
 process.nextTick ->
   offset = Math.floor(Math.random() * 50) + 1
-  pages = 10
+  pages = 4
   for page in [offset..offset + pages]
     do(p=page)->
       jsdom.env "http://memebase.cheezburger.com/senorgif/page/#{p}",  ['http://code.jquery.com/jquery.js'], (err, window)->
