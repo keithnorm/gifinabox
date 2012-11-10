@@ -1,6 +1,8 @@
 # http://just-name-it-beansna.nko3.jit.su/
 
 express = require('express')
+controller = require('./controller')
+
 app = express()
 
 mongoose = require('mongoose')
@@ -8,7 +10,6 @@ mongoose.connect('mongodb://nodejitsu_nko3-just-name-it-beansna:22s0te0hc7ubqoim
 
 app.use express.static __dirname + '/public'
 
-app.get '/', (req, res) ->
-  res.render 'index.jade'
+app.get '/', controller.index
 
 server = app.listen(3000)
