@@ -1,6 +1,6 @@
 {
   "name": "nko3-just-name-it-beansna",
-  "version": "0.0.0-14",
+  "version": "0.0.0-15",
   "description": "Just Name it Beansnappers",
   "scripts": {
     "start": "coffee server.coffee"
@@ -13,8 +13,7 @@
     "express": "3",
     "coffee-script": "*",
     "jade": "*",
-    "mongoose": "*",
-    "node-gif": "*"
+    "mongoose": "*"
   },
   "engines": {
     "node": "0.8.x"
