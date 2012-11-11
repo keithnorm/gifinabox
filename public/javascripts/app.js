@@ -19,11 +19,4 @@
     });
   });
 
-  window.onload = function() {
-    return $('#gifs').masonry({
-      itemSelector: 'li',
-      columnWidth: 20
-    });
-  };
-
 }).call(this);

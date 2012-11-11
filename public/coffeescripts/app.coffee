@@ -7,8 +7,3 @@ $ ->
       .done(-> recorder.trigger('gif:done', gif.link()))
       .fail(-> recorder.trigger('gif:fail'))
 
-window.onload = ->
-  $('#gifs').masonry
-    itemSelector: 'li'
-    columnWidth: 20
-
