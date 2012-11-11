@@ -6,4 +6,7 @@ GifSchema = new mongoose.Schema
   encodedData: String
   slug: String
 
+GifSchema.methods.link = ->
+  "/gifs/#{ @slug }"
+
 module.exports = mongoose.model('Gif', GifSchema)
