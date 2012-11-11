@@ -11,5 +11,6 @@ block content
 
   ul#gifs.row
     - each gif in gifs
-      li 
-        img(src="#{gif}")
+      li
+        a(href=gif.link())
+          img(src="#{ gif.get('encodedData') }")

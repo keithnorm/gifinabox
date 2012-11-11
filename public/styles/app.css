@@ -50,3 +50,7 @@ canvas {
 #gifs img {
   float: left;
 }
+#gifs img {
+  height: 120px;
+  width: 160px;
+}
