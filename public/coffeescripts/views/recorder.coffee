@@ -2,13 +2,10 @@ class bs.views.Recorder extends Backbone.View
 
   events:
     "click #record": "_record"
-    "click #stop": "_stop"
+    "click #record.stop": "_stop"
 
   initialize: ->
     @$startButton = $('#record')
-    @$stopButton = $('#stop')
-
-    disable(@$stopButton)
     enable(@$startButton)
 
     @on 'gif:done', onSave
@@ -22,12 +19,10 @@ class bs.views.Recorder extends Backbone.View
 
   _record: ->
     disable(@$startButton)
-    enable(@$stopButton)
 
     @recorder.start()
 
   _stop: ->
-    disable(@$stopButton)
     enable(@$startButton)
 
     @recorder.stop()
@@ -38,10 +33,10 @@ class bs.views.Recorder extends Backbone.View
     @trigger("gif:create", data)
 
   disable = ($el) ->
-    $el.attr('disabled', 'disabled')
+    $el.addClass('stop')
 
   enable = ($el) ->
-    $el.removeAttr('disabled')
+    $el.removeClass('stop')
 
   onSave = (link) ->
     $('#link').val(link)

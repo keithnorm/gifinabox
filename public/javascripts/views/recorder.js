@@ -14,13 +14,11 @@
 
     Recorder.prototype.events = {
       "click #record": "_record",
-      "click #stop": "_stop"
+      "click #record.stop": "_stop"
     };
 
     Recorder.prototype.initialize = function() {
       this.$startButton = $('#record');
-      this.$stopButton = $('#stop');
-      disable(this.$stopButton);
       enable(this.$startButton);
       this.on('gif:done', onSave);
       this.on('gif:fail', onError);
@@ -34,13 +32,11 @@
 
     Recorder.prototype._record = function() {
       disable(this.$startButton);
-      enable(this.$stopButton);
       return this.recorder.start();
     };
 
     Recorder.prototype._stop = function() {
       var data;
-      disable(this.$stopButton);
       enable(this.$startButton);
       this.recorder.stop();
       data = this.recorder.dataURL();
@@ -49,11 +45,11 @@
     };
 
     disable = function($el) {
-      return $el.attr('disabled', 'disabled');
+      return $el.addClass('stop');
     };
 
     enable = function($el) {
-      return $el.removeAttr('disabled');
+      return $el.removeClass('stop');
     };
 
     onSave = function(link) {
