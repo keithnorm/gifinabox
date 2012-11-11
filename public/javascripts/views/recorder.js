@@ -76,7 +76,7 @@
 
     onSave = function(gif) {
       $('#link').attr('href', gif.link()).text(gif.link());
-      $('#gifs').prepend("<li><a href='" + (gif.link()) + "'><img src='" + (gif.get('url')) + "'></a></li>");
+      $('#gifs').prepend("<li><a href='http://" + (gif.link()) + "'><img src='" + (gif.get('url')) + "'></a></li>");
       return $('#record').removeClass('uploading');
     };
 
