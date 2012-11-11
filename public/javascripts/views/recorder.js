@@ -4,7 +4,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   bs.views.Recorder = (function(_super) {
-    var disable, enable, onError, onSave;
+    var RECORD_TIME, countDown, disable, enable, onError, onSave;
 
     __extends(Recorder, _super);
 
@@ -12,9 +12,10 @@
       return Recorder.__super__.constructor.apply(this, arguments);
     }
 
+    RECORD_TIME = 5000;
+
     Recorder.prototype.events = {
-      "click #record:not(.stop)": "_record",
-      "click #record.stop": "_stop"
+      "click #record:not(.stop)": "_record"
     };
 
     Recorder.prototype.initialize = function() {
@@ -32,10 +33,19 @@
     };
 
     Recorder.prototype._record = function() {
+      var _this = this;
       disable(this.$startButton);
       this.$("video").show();
       this.$("#gif").hide();
-      return this.recorder.start();
+      this.recorder.start();
+      return countDown(RECORD_TIME, {
+        tick: function(tick) {
+          return _this.$startButton.text(tick);
+        },
+        done: function() {
+          return _this._stop();
+        }
+      });
     };
 
     Recorder.prototype._stop = function() {
@@ -61,12 +71,27 @@
     onSave = function(gif) {
       $('#link').attr('href', gif.link()).text(gif.link());
       $('#gifs').prepend("<li><a href='" + (gif.link()) + "'><img src='" + (gif.get('url')) + "'></a></li>");
-      $('#record').removeClass('uploading');
-      return alert("Your gif was created successfully!");
+      return $('#record').removeClass('uploading');
     };
 
     onError = function() {
       return alert("We had some trouble saving your gif.");
+    };
+
+    countDown = function(ms, opts) {
+      var counter, numberOfTicks, timer;
+      numberOfTicks = ms / 1000;
+      timer = function() {
+        if (numberOfTicks > 0) {
+          opts.tick(numberOfTicks);
+          return numberOfTicks -= 1;
+        } else {
+          clearInterval(counter);
+          return opts.done();
+        }
+      };
+      timer();
+      return counter = setInterval(timer, 1000);
     };
 
     return Recorder;

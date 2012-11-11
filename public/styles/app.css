@@ -97,7 +97,7 @@ canvas {
   box-shadow: -1px -1px 7px rgba(0,0,0,0.7) inset;
   border: none;
   color: #000;
-  font-size: 29px;
+  font-size: 26px;
   height: 36px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -106,16 +106,16 @@ canvas {
   border-radius: 4px;
   padding: 1px 0;
   width: 100%;
-  line-height: 1000em;
   overflow: hidden;
+  text-indent: -9999px;
 }
 #record:active {
   box-shadow: 0px 0px 7px rgba(0,0,0,0.7) inset;
   background-position: center 8px;
 }
 #record.stop {
-  background-image: url("/images/stop.png");
-  background-color: #30812d;
+  background-image: none;
+  text-indent: inherit;
 }
 #record.uploading {
   background-image: url("/images/ajax-loader.gif");

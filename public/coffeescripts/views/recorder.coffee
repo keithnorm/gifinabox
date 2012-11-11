@@ -1,8 +1,9 @@
 class bs.views.Recorder extends Backbone.View
 
+  RECORD_TIME = 5000  # ms
+
   events:
     "click #record:not(.stop)": "_record"
-    "click #record.stop": "_stop"
 
   initialize: ->
     @$startButton = $('#record')
@@ -24,6 +25,10 @@ class bs.views.Recorder extends Backbone.View
     @$("#gif").hide()
 
     @recorder.start()
+
+    countDown RECORD_TIME,
+      tick: (tick) => @$startButton.text(tick)
+      done: => @_stop()
 
   _stop: ->
     enable(@$startButton)
@@ -47,7 +52,19 @@ class bs.views.Recorder extends Backbone.View
     $('#link').attr('href', gif.link()).text(gif.link())
     $('#gifs').prepend "<li><a href='#{ gif.link() }'><img src='#{ gif.get('url') }'></a></li>"
     $('#record').removeClass 'uploading'
-    alert("Your gif was created successfully!")
 
   onError = ->
     alert("We had some trouble saving your gif.")
+
+  countDown = (ms, opts) ->
+    numberOfTicks = ms / 1000
+    timer = ->
+      if numberOfTicks > 0
+        opts.tick(numberOfTicks)
+        numberOfTicks -= 1
+      else
+        clearInterval(counter)
+        opts.done()
+
+    timer()
+    counter = setInterval(timer, 1000)
