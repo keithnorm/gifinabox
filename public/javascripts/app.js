@@ -8,8 +8,13 @@
     });
     return recorder.on("gif:create", function(data) {
       var gif;
-      return gif = new bs.models.Gif({
+      gif = new bs.models.Gif({
         encodedData: data
+      });
+      return gif.save().done(function() {
+        return recorder.trigger('gif:done', gif.link());
+      }).fail(function() {
+        return recorder.trigger('gif:fail');
       });
     });
   });

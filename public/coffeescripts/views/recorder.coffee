@@ -40,7 +40,7 @@ class bs.views.Recorder extends Backbone.View
     $el.removeClass('stop')
 
   onSave = (link) ->
-    $('#link').val(link)
+    $('#link').attr('href', link).text(link)
     alert("Your gif was created successfully!")
 
   onError = ->

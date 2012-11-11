@@ -54,7 +54,7 @@
     };
 
     onSave = function(link) {
-      $('#link').val(link);
+      $('#link').attr('href', link).text(link);
       return alert("Your gif was created successfully!");
     };
 

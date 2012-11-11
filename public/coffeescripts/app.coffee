@@ -6,4 +6,3 @@ $ ->
     gif.save()
       .done(-> recorder.trigger('gif:done', gif.link()))
       .fail(-> recorder.trigger('gif:fail'))
-
