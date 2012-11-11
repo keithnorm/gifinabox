@@ -14,10 +14,16 @@ class bs.collections.Pagination extends Backbone.Collection
 
 
   parse: (response) ->
+    return if _.isEmpty(response.gifs)
+
     @gifsCollection.reset(response.gifs)
+
+    @count = response.count
     @currentOffset = response.offset
 
   _fetchNext: =>
+    return if @currentOffset >= @count
+
     params =
       offset: @currentOffset ?= @GIFS_PER_PAGE
 

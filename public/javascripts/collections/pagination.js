@@ -30,12 +30,19 @@
     };
 
     Pagination.prototype.parse = function(response) {
+      if (_.isEmpty(response.gifs)) {
+        return;
+      }
       this.gifsCollection.reset(response.gifs);
+      this.count = response.count;
       return this.currentOffset = response.offset;
     };
 
     Pagination.prototype._fetchNext = function() {
       var params, _ref;
+      if (this.currentOffset >= this.count) {
+        return;
+      }
       params = {
         offset: (_ref = this.currentOffset) != null ? _ref : this.currentOffset = this.GIFS_PER_PAGE
       };
