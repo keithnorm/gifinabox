@@ -19,6 +19,8 @@ class bs.views.Recorder extends Backbone.View
 
   _record: ->
     disable(@$startButton)
+    @$("video").show()
+    @$("#gif").hide()
 
     @recorder.start()
 
@@ -27,7 +29,8 @@ class bs.views.Recorder extends Backbone.View
 
     @recorder.stop()
 
-    @$("#gif").attr('src', "data:image/gif;base64,#{ @recorder.encodedData() }")
+    @$("#gif").attr('src', "data:image/gif;base64,#{ @recorder.encodedData() }").show()
+    @$("video").hide()
     @trigger("gif:create", @recorder.encodedData())
 
   disable = ($el) ->

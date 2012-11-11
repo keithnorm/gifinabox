@@ -32,13 +32,16 @@
 
     Recorder.prototype._record = function() {
       disable(this.$startButton);
+      this.$("video").show();
+      this.$("#gif").hide();
       return this.recorder.start();
     };
 
     Recorder.prototype._stop = function() {
       enable(this.$startButton);
       this.recorder.stop();
-      this.$("#gif").attr('src', "data:image/gif;base64," + (this.recorder.encodedData()));
+      this.$("#gif").attr('src', "data:image/gif;base64," + (this.recorder.encodedData())).show();
+      this.$("video").hide();
       return this.trigger("gif:create", this.recorder.encodedData());
     };
 
