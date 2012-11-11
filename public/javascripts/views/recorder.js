@@ -13,7 +13,7 @@
     }
 
     Recorder.prototype.events = {
-      "click #record": "_record",
+      "click #record:not(.stop)": "_record",
       "click #record.stop": "_stop"
     };
 

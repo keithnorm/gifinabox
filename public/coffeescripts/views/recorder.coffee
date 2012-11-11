@@ -1,7 +1,7 @@
 class bs.views.Recorder extends Backbone.View
 
   events:
-    "click #record": "_record"
+    "click #record:not(.stop)": "_record"
     "click #record.stop": "_stop"
 
   initialize: ->
