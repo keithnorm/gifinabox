@@ -95,6 +95,11 @@ canvas {
   height: 120px;
   width: 160px;
 }
+.buttons,
+#link {
+  position: relative;
+  z-index: 40;
+}
 #record {
   background: #cac5c5 url("/images/record.png") no-repeat center 6px;
   box-shadow: -1px -1px 7px rgba(0,0,0,0.7) inset;
