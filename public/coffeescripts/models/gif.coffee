@@ -3,4 +3,4 @@ class bs.models.Gif extends Backbone.Model
   urlRoot: "/gifs"
 
   link: =>
-    "#{ window.location.host }#{ @urlRoot }/#{ @get('slug') }"
+    "#{ window.location.protocol }//#{ window.location.host }#{ @urlRoot }/#{ @get('slug') }"

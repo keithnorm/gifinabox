@@ -2,8 +2,9 @@
 (function() {
 
   window.bs = {
+    views: {},
     models: {},
-    views: {}
+    collections: {}
   };
 
 }).call(this);

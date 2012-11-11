@@ -11,7 +11,7 @@ app.use express.static __dirname + '/public'
 
 app.get '/', (req, res) ->
   Gif.find().limit(18).sort({ _id : -1 }).exec (err, gifs) =>
-    res.render 'index.jade', { gifs: gifs }
+    res.render 'index.jade', { stringifiedGifs: JSON.stringify(gifs) }
 
 app.get '/gifs/:slug', (req, res) ->
   Gif.findOne(slug: req.params.slug).exec (err, gif) ->
@@ -22,5 +22,8 @@ app.post '/gifs', (req, res) ->
   gif.uploadAndSave (err, gif) ->
     res.json gif
 
+app.get '/p', (req, res) ->
+  Gif.count (err, count) ->
+    res.json { count: count }
 
 server = app.listen(3000)

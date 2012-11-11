@@ -22,7 +22,7 @@ block content
     a#link
 
   ul#gifs.row
-    - each gif in gifs
-      li
-        a(href=gif.link())
-          img(src="#{ gif.get('url') }")
+
+
+
+  script!= "bs.Gifs = new bs.collections.Gifs(" + stringifiedGifs + ");"

@@ -1,3 +1,4 @@
 window.bs =
-  models: {}
-  views: {}
+  views       : {}
+  models      : {}
+  collections : {}

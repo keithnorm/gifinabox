@@ -1,0 +1,1 @@
+class bs.Router extends Backbone.Router
