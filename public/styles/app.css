@@ -10,4 +10,5 @@ canvas {
 }
 #gifs li {
   float: left;
+  margin-right: 10px;
 }
