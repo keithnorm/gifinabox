@@ -3,9 +3,6 @@
 
   $(function() {
     var recorder;
-    new bs.views.Recorder({
-      el: '#recorder'
-    });
     recorder = new bs.views.Recorder({
       el: '#recorder'
     });
@@ -15,9 +12,9 @@
         encodedData: data
       });
       return gif.save().done(function() {
-        return alert("Your gif was created successfully!");
+        return this.recorder.trigger('gif:done', gif.link());
       }).fail(function() {
-        return alert("We had some trouble saving your gif.");
+        return this.recorder.trigger('gif:fail');
       });
     });
   });
