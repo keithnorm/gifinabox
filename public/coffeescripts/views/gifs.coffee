@@ -1,6 +1,8 @@
 class bs.views.Gifs extends Backbone.View
 
   initialize: (@options) ->
+    @$el.html('')
+
     @models = @options.models
     @render()
 

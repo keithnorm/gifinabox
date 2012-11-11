@@ -13,6 +13,7 @@
 
     Gifs.prototype.initialize = function(options) {
       this.options = options;
+      this.$el.html('');
       this.models = this.options.models;
       return this.render();
     };

@@ -6,6 +6,9 @@
     recorder = new bs.views.Recorder({
       el: '#recorder'
     });
+    bs.Pagination = new bs.collections.Pagination({
+      gifsCollection: bs.Gifs
+    });
     return recorder.on("gif:create", function(data) {
       var gif;
       gif = new bs.models.Gif({
