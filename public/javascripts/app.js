@@ -3,9 +3,6 @@
 
   $(function() {
     var recorder;
-    new bs.views.Recorder({
-      el: '#recorder'
-    });
     recorder = new bs.views.Recorder({
       el: '#recorder'
     });
