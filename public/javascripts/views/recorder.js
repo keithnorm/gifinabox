@@ -58,8 +58,9 @@
       return $el.removeClass('stop').removeClass('uploading');
     };
 
-    onSave = function(link) {
-      $('#link').attr('href', link).text(link);
+    onSave = function(gif) {
+      $('#link').attr('href', gif.link()).text(gif.link());
+      $('#gifs').prepend("<li><a href='" + (gif.link()) + "'><img src='" + (gif.get('url')) + "'></a></li>");
       $('#record').removeClass('uploading');
       return alert("Your gif was created successfully!");
     };

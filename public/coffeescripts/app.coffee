@@ -3,6 +3,7 @@ $ ->
 
   recorder.on "gif:create", (data) ->
     gif = new bs.models.Gif(encodedData: data)
+    recorder.trigger('gif:uploading')
     gif.save()
-      .done(-> recorder.trigger('gif:done', gif.link()))
+      .done(-> recorder.trigger('gif:done', gif))
       .fail(-> recorder.trigger('gif:fail'))

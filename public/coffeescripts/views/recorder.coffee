@@ -43,8 +43,9 @@ class bs.views.Recorder extends Backbone.View
   enable = ($el) ->
     $el.removeClass('stop').removeClass('uploading')
 
-  onSave = (link) ->
-    $('#link').attr('href', link).text(link)
+  onSave = (gif) ->
+    $('#link').attr('href', gif.link()).text(gif.link())
+    $('#gifs').prepend "<li><a href='#{ gif.link() }'><img src='#{ gif.get('url') }'></a></li>"
     $('#record').removeClass 'uploading'
     alert("Your gif was created successfully!")
 

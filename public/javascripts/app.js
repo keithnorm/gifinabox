@@ -11,8 +11,9 @@
       gif = new bs.models.Gif({
         encodedData: data
       });
+      recorder.trigger('gif:uploading');
       return gif.save().done(function() {
-        return recorder.trigger('gif:done', gif.link());
+        return recorder.trigger('gif:done', gif);
       }).fail(function() {
         return recorder.trigger('gif:fail');
       });

@@ -117,6 +117,10 @@ canvas {
   background-image: url("/images/stop.png");
   background-color: #30812d;
 }
+#record.uploading {
+  background-image: url("/images/ajax-loader.gif");
+  background-position: center 8px;
+}
 #gif {
   width: 100%;
   margin-top: 100px;
