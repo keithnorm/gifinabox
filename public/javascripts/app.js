@@ -15,6 +15,7 @@
         encodedData: data
       });
       return gif.save().done(function() {
+        $('#link').val(gif.link());
         return alert("Your gif was created successfully!");
       }).fail(function() {
         return alert("We had some trouble saving your gif.");

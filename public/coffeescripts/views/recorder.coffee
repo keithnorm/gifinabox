@@ -30,6 +30,7 @@ class bs.views.Recorder extends Backbone.View
     @recorder.stop()
 
     data = @recorder.dataURL()
+
     @$("#gif").attr('src', data)
     @trigger("gif:create", data)
 

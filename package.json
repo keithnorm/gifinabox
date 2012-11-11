@@ -15,7 +15,8 @@
     "jade": "*",
     "mongoose": "*",
     "jsdom": "*",
-    "stylus": "*"
+    "stylus": "*",
+    "hashids": "*"
   },
   "engines": {
     "node": "0.8.x"

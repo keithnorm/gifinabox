@@ -5,8 +5,9 @@ block content
     video(autoplay=true)
     canvas
     img#gif
-    button(id="record") Record
-    button(id="stop") ◼
+    input#link(type="text")
+    button#record Record
+    button#stop ◼
 
   ul#gifs
     - each gif in gifs
