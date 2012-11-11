@@ -2,6 +2,7 @@
 (function() {
 
   window.bs = {
+    models: {},
     views: {}
   };
 
