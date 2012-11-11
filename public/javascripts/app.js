@@ -12,9 +12,9 @@
         encodedData: data
       });
       return gif.save().done(function() {
-        return this.recorder.trigger('gif:done', gif.link());
+        return recorder.trigger('gif:done', gif.link());
       }).fail(function() {
-        return this.recorder.trigger('gif:fail');
+        return recorder.trigger('gif:fail');
       });
     });
   });
