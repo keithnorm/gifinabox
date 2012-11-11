@@ -3,15 +3,14 @@
 express = require('express')
 controller = require('./controller')
 
+Gif = require('./gif')
+
 app = express()
 fs = require 'fs'
 jsdom = require 'jsdom'
 
 # scraped from http://memebase.cheezburger.com/senorgif
-gifs = []
-
-mongoose = require('mongoose')
-mongoose.connect('mongodb://nodejitsu_nko3-just-name-it-beansna:22s0te0hc7ubqoimcjcnc17071@ds039267.mongolab.com:39267/nodejitsu_nko3-just-name-it-beansna_nodejitsudb5714439577')
+gifArray = []
 
 process.nextTick ->
   offset = Math.floor(Math.random() * 50) + 1
@@ -22,12 +21,23 @@ process.nextTick ->
         $ = window.$
         imgs = $('.event-item-lol-image').map (i, el) ->
           $(el).attr('src')
-        console.log 'got page', p
-        gifs.push.apply(gifs, imgs)
+        gifArray.push.apply(gifArray, imgs)
 
 app.use express.static __dirname + '/public'
 
 app.get '/', (req, res) ->
-  res.render 'index.jade', {gifs: gifs}
+  res.render 'index.jade', {gifs: gifArray}
+
+app.get '/show/:id', (req, res) ->
+  Gif.findOne(_id: req.params.id).exec (err, gif) ->
+    res.render 'show.jade', {gif: gif}
+
+app.post '/gif', (req, res) ->
+  gif = new Gif
+    encodedData: req.params.encodedData
+    link: req.params.link
+
+  gif.save (err, gif) ->
+    res.render 'show.jade', {gifs: gifArray}
 
 server = app.listen(3000)
