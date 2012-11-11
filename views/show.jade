@@ -1,6 +1,5 @@
 extends layout
 
 block content
-  #gif
-    a(href=gif.link())
-      img(src=gif.get('url'))
+  .video
+    img#gif(src=gif.get('url'))

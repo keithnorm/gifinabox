@@ -61,12 +61,12 @@ video,
 }
 video,
 #gif {
+  border: 2px solid #b5aaba;
   position: absolute;
   top: 0;
   left: 0;
 }
 video {
-  border: 2px solid #b5aaba;
   display: block;
 }
 .instructions {
@@ -128,13 +128,15 @@ canvas {
 }
 #gif {
   width: 100%;
-  margin-top: 100px;
 }
 #gif a {
   display: block;
   margin: 0 auto;
-  height: 240px;
-  width: 320px;
+}
+#gif a,
+#gif img {
+  width: 450px;
+  height: 337px;
 }
 #recorder #gif {
   display: none;
