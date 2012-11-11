@@ -30,7 +30,6 @@ header {
 /* IE10+ */
   background: linear-gradient(to bottom, #424242 0%, #000 100%);
 /* W3C */
-  margin-bottom: 20px;
   padding: 5px 0;
 }
 header h1 {
@@ -61,7 +60,6 @@ video,
 }
 video,
 #gif {
-  border: 2px solid #b5aaba;
   position: absolute;
   top: 0;
   left: 0;
@@ -126,6 +124,14 @@ canvas {
   background-image: url("/images/ajax-loader.gif");
   background-position: center 8px;
 }
+#overlay img {
+  position: absolute;
+  left: 50%;
+  top: 43px;
+  z-index: 20;
+  width: 1080px;
+  margin-left: -540px;
+}
 #gif {
   width: 100%;
 }
@@ -137,6 +143,9 @@ canvas {
 #gif img {
   width: 450px;
   height: 337px;
+}
+#recorder {
+  background-color: #111;
 }
 #recorder #gif {
   display: none;
