@@ -1,3 +1,41 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url("/images/wood.png");
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+header {
+  background: #424242;
+/* Old browsers */
+  background: -moz-linear-gradient(top, #424242 0%, #000 100%);
+/* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #424242), color-stop(100%, #000));
+/* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #424242 0%, #000 100%);
+/* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #424242 0%, #000 100%);
+/* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #424242 0%, #000 100%);
+/* IE10+ */
+  background: linear-gradient(to bottom, #424242 0%, #000 100%);
+/* W3C */
+  padding: 10px 0;
+}
+header h1 {
+  color: #f3fdeb;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  font-size: 24px;
+}
 video {
   height: 240px;
   width: 320px;
@@ -8,7 +46,7 @@ canvas {
 #gifs {
   list-style: none;
 }
-#gifs li {
+#gifs li,
+#gifs img {
   float: left;
-  margin-right: 10px;
 }
