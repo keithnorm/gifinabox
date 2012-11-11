@@ -24,7 +24,6 @@ GifSchema.virtual('encodedData').get -> this.__encodedData
 GifSchema.virtual('encodedData').set (val) -> this.__encodedData = val
 
 GifSchema.methods.uploadAndSave = (callback) ->
-  # Upload to S3
   data = new Buffer(@get('encodedData'), 'base64')
   slug = hashids.encrypt(randomNumber())
 
