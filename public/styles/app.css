@@ -42,6 +42,11 @@ header h1 {
   height: 33px;
   text-indent: -999px;
   overflow: hidden;
+  float: left;
+}
+header iframe {
+  margin-top: 3px;
+  float: right;
 }
 .video {
   width: 450px;
