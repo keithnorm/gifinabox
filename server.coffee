@@ -3,16 +3,12 @@
 applicationSalt = "Marcus Sacco"
 
 express = require('express')
-controller = require('./controller')
 Hashids = require("hashids")
 hashids = new Hashids(applicationSalt, 5)
 
 Gif = require('./gif')
 
 app = express()
-fs = require 'fs'
-jsdom = require 'jsdom'
-
 app.use(express.bodyParser())
 
 randomNumber = ->
