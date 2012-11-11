@@ -24,7 +24,7 @@ randomNumber = ->
 app.use express.static __dirname + '/public'
 
 app.get '/', (req, res) ->
-  Gif.find().limit(8).sort({ '$natural': -1 }).exec (err, gifs) =>
+  Gif.find().limit(8).sort({ _id : -1 }).exec (err, gifs) =>
     res.render 'index.jade', { gifs: gifs }
 
 app.get '/gifs/:slug', (req, res) ->
