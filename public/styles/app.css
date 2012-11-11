@@ -30,12 +30,17 @@ header {
   background: linear-gradient(to bottom, #424242 0%, #000 100%);
 /* W3C */
   margin-bottom: 10px;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 header h1 {
   color: #f3fdeb;
   box-shadow: 0 1px 1px rgba(0,0,0,0.5);
   font-size: 24px;
+  background: url("/images/raw-dog.png") no-repeat;
+  width: 145px;
+  height: 33px;
+  text-indent: -999px;
+  overflow: hidden;
 }
 .video {
   width: 450px;
@@ -46,7 +51,6 @@ video {
   width: 450px;
   margin: 0 auto 10px;
 }
-.buttons,
 canvas {
   display: none;
 }
