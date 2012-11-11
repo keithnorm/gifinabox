@@ -20,6 +20,7 @@
     Recorder.prototype.initialize = function() {
       this.$startButton = $('#record');
       enable(this.$startButton);
+      this.on('gif:uploading', this._uploadStart.bind(this));
       this.on('gif:done', onSave);
       this.on('gif:fail', onError);
       return this.recorder = new MediaRecorder({
@@ -45,16 +46,21 @@
       return this.trigger("gif:create", this.recorder.encodedData());
     };
 
+    Recorder.prototype._uploadStart = function(e) {
+      return this.$startButton.attr('class', 'uploading');
+    };
+
     disable = function($el) {
-      return $el.addClass('stop');
+      return $el.attr('class', 'stop');
     };
 
     enable = function($el) {
-      return $el.removeClass('stop');
+      return $el.removeClass('stop').removeClass('uploading');
     };
 
     onSave = function(link) {
       $('#link').attr('href', link).text(link);
+      $('#record').removeClass('uploading');
       return alert("Your gif was created successfully!");
     };
 

@@ -8,6 +8,7 @@ class bs.views.Recorder extends Backbone.View
     @$startButton = $('#record')
     enable(@$startButton)
 
+    @on 'gif:uploading', this._uploadStart.bind(this)
     @on 'gif:done', onSave
     @on 'gif:fail', onError
 
@@ -33,14 +34,18 @@ class bs.views.Recorder extends Backbone.View
     @$("video").hide()
     @trigger("gif:create", @recorder.encodedData())
 
+  _uploadStart: (e) ->
+    @$startButton.attr 'class', 'uploading'
+
   disable = ($el) ->
-    $el.addClass('stop')
+    $el.attr('class', 'stop')
 
   enable = ($el) ->
-    $el.removeClass('stop')
+    $el.removeClass('stop').removeClass('uploading')
 
   onSave = (link) ->
     $('#link').attr('href', link).text(link)
+    $('#record').removeClass 'uploading'
     alert("Your gif was created successfully!")
 
   onError = ->
