@@ -48,6 +48,6 @@ app.post '/gifs', (req, res) ->
     encodedData: req.body.encodedData
 
   gif.save (err, gif) ->
-    res.json gif
+    res.json { slug: gif.get('slug') }
 
 server = app.listen(3000)
