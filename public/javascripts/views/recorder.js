@@ -34,18 +34,24 @@
 
     Recorder.prototype._record = function() {
       var _this = this;
-      disable(this.$startButton);
-      this.$("video").show();
-      this.$("#gif").hide();
-      this.recorder.start();
-      return countDown(RECORD_TIME, {
-        tick: function(tick) {
-          return _this.$startButton.text(tick);
-        },
-        done: function() {
-          return _this._stop();
-        }
-      });
+      this.$("video").hide();
+      this.$('#intro').show().attr('src', '/images/intro.gif?' + (new Date()).getTime());
+      this.$('.instructions').css('visibility', 'hidden');
+      return setTimeout(function() {
+        disable(_this.$startButton);
+        _this.$('#intro').hide();
+        _this.$("video").show();
+        _this.$("#gif").hide();
+        _this.recorder.start();
+        return countDown(RECORD_TIME, {
+          tick: function(tick) {
+            return _this.$startButton.text(tick);
+          },
+          done: function() {
+            return _this._stop();
+          }
+        });
+      }, 2000);
     };
 
     Recorder.prototype._stop = function() {

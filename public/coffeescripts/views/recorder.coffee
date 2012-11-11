@@ -20,15 +20,22 @@ class bs.views.Recorder extends Backbone.View
       width: 320  # px
 
   _record: ->
-    disable(@$startButton)
-    @$("video").show()
-    @$("#gif").hide()
+    @$("video").hide()
+    @$('#intro').show().attr('src', '/images/intro.gif?' + (new Date()).getTime())
+    @$('.instructions').css 'visibility', 'hidden'
 
-    @recorder.start()
-
-    countDown RECORD_TIME,
-      tick: (tick) => @$startButton.text(tick)
-      done: => @_stop()
+    # this starts the film intro animation
+    setTimeout =>
+      disable(@$startButton)
+      @$('#intro').hide()
+      @$("video").show()
+      @$("#gif").hide()
+      @recorder.start()
+      
+      countDown RECORD_TIME,
+        tick: (tick) => @$startButton.text(tick)
+        done: => @_stop()
+    , 2000
 
   _stop: ->
     enable(@$startButton)
