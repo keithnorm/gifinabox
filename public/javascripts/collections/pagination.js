@@ -20,14 +20,12 @@
     Pagination.prototype.urlRoot = '/p';
 
     Pagination.prototype.initialize = function(options) {
-      var _ref;
       this.options = options != null ? options : {};
       this.gifsCollection = this.options.gifsCollection;
       this.view = new bs.views.Pagination({
         el: "#pagination"
       });
       this.view.render();
-      this.currentOffset = +((_ref = this.options.offset) != null ? _ref : 0);
       return this.view.on('click:next', this._fetchNext);
     };
 
@@ -37,9 +35,9 @@
     };
 
     Pagination.prototype._fetchNext = function() {
-      var params;
+      var params, _ref;
       params = {
-        offset: this.currentOffset + this.GIFS_PER_PAGE
+        offset: (_ref = this.currentOffset) != null ? _ref : this.currentOffset = this.GIFS_PER_PAGE
       };
       this.url = this._contructUrl(params);
       return this.fetch();

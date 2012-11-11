@@ -10,8 +10,6 @@ class bs.collections.Pagination extends Backbone.Collection
     @view = new bs.views.Pagination el: "#pagination"
     @view.render()
 
-    @currentOffset = +(@options.offset ? 0)
-
     @view.on 'click:next', @_fetchNext
 
 
@@ -21,7 +19,7 @@ class bs.collections.Pagination extends Backbone.Collection
 
   _fetchNext: =>
     params =
-      offset: @currentOffset + @GIFS_PER_PAGE
+      offset: @currentOffset ?= @GIFS_PER_PAGE
 
     @url = @_contructUrl(params)
 
