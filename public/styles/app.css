@@ -45,25 +45,27 @@ header h1 {
 }
 .video {
   width: 450px;
+  margin: 0 auto 10px auto;
   position: relative;
-  margin: 0 auto;
 }
-video, .instructions {
-  height: 337px;
+video,
+.instructions {
   width: 450px;
-  margin: 0 auto 10px;
+  height: 337px;
+  margin-bottom: 10px;
 }
-video, #gif {
+video,
+#gif {
   position: absolute;
   top: 0;
   left: 0;
 }
 video {
-  border: 2px solid #B5AABA;
+  border: 2px solid #b5aaba;
   display: block;
 }
 .instructions {
-  background-color: #E8E4E3;
+  background-color: #e8e4e3;
   padding: 1em;
 }
 canvas {
