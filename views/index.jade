@@ -11,5 +11,5 @@ block content
 
   ul#gifs
     - each gif in gifs
-      li 
-        img(src="#{gif}")
+      li
+        img(src="#{ gif.get('encodedData') }")
