@@ -9,8 +9,10 @@ app.use(express.bodyParser())
 
 app.use express.static __dirname + '/public'
 
+DEFAULT_BATCH_SIZE = 18
+
 app.get '/', (req, res) ->
-  Gif.find().limit(18).sort({ _id : -1 }).exec (err, gifs) =>
+  Gif.find().limit(DEFAULT_BATCH_SIZE).sort({ _id : -1 }).exec (err, gifs) =>
     res.render 'index.jade', { stringifiedGifs: JSON.stringify(gifs) }
 
 app.get '/gifs/:slug', (req, res) ->
@@ -25,6 +27,10 @@ app.post '/gifs', (req, res) ->
 
 app.get '/p', (req, res) ->
   Gif.count (err, count) ->
-    res.json { count: count }
+    limit = req.query.limit || DEFAULT_BATCH_SIZE
+    offset = +req.query.offset
+
+    Gif.find().skip(offset).limit(limit).exec (err, gifs) ->
+      res.json { count: count, gifs: gifs, offset: offset + limit }
 
 server = app.listen(3000)
