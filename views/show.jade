@@ -1,5 +1,8 @@
 extends layout
 
 block content
-  .video
-    img#gif(src=gif.get('url'))
+  #recorder.row
+    #overlay
+      img(src='/images/curtains.png')
+    .video
+      img#gif.show(src=gif.get('url'))
