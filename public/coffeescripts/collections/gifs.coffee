@@ -6,7 +6,6 @@ class bs.collections.Gifs extends Backbone.Collection
     @on 'reset', @render
 
     @reset(models)
-    console.log(@models)
 
-  render: ->
+  render: =>
     new bs.views.Gifs({ models: @models, el: "#gifs" })
