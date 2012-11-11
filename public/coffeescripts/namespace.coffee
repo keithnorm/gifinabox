@@ -1,2 +1,3 @@
 window.bs =
+  models: {}
   views: {}

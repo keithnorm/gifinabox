@@ -2,8 +2,23 @@
 (function() {
 
   $(function() {
-    return new bs.views.Recorder({
+    var recorder;
+    new bs.views.Recorder({
       el: '#recorder'
+    });
+    recorder = new bs.views.Recorder({
+      el: '#recorder'
+    });
+    return recorder.on("gif:create", function(data) {
+      var gif;
+      gif = new bs.models.Gif({
+        encodedData: data
+      });
+      return gif.save().done(function() {
+        return alert("Your gif was created successfully!");
+      }).fail(function() {
+        return alert("We had some trouble saving your gif.");
+      });
     });
   });
 

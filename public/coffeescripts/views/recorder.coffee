@@ -28,7 +28,10 @@ class bs.views.Recorder extends Backbone.View
     enable(@$startButton)
 
     @recorder.stop()
-    @$("#gif").attr('src', @recorder.dataURL())
+
+    data = @recorder.dataURL()
+    @$("#gif").attr('src', data)
+    @trigger("gif:create", data)
 
   disable = ($el) ->
     $el.attr('disabled', 'disabled')
