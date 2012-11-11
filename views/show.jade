@@ -6,3 +6,7 @@ block content
       img(src='/images/curtains.png')
     .video
       img#gif.show(src=gif.get('url'))
+
+  ul#gifs.row
+
+  script!= "bs.Gifs = new bs.collections.Gifs(" + stringifiedGifs + ");"

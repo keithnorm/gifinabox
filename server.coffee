@@ -14,8 +14,9 @@ app.get '/', (req, res) ->
     res.render 'index.jade', { stringifiedGifs: JSON.stringify(gifs) }
 
 app.get '/gifs/:slug', (req, res) ->
-  Gif.findOne(slug: req.params.slug).exec (err, gif) ->
-    res.render 'show.jade', { gif: gif }
+  Gif.find().limit(18).sort({ _id : -1 }).exec (err, gifs) =>
+    Gif.findOne(slug: req.params.slug).exec (err, gif) =>
+      res.render 'show.jade', { gif: gif, stringifiedGifs: JSON.stringify(gifs) }
 
 app.post '/gifs', (req, res) ->
   gif = new Gif(encodedData: req.body.encodedData)
