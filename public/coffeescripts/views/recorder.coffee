@@ -27,10 +27,8 @@ class bs.views.Recorder extends Backbone.View
 
     @recorder.stop()
 
-    data = @recorder.dataURL()
-
-    @$("#gif").attr('src', data)
-    @trigger("gif:create", data)
+    @$("#gif").attr('src', "data:image/gif;base64,#{ @recorder.encodedData() }")
+    @trigger("gif:create", @recorder.encodedData())
 
   disable = ($el) ->
     $el.addClass('stop')

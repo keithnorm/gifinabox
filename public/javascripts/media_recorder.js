@@ -51,11 +51,7 @@
       return this.encoder.finish();
     };
 
-    MediaRecorder.prototype.dataURL = function() {
-      return "data:image/gif;base64," + (this._rawDataURL());
-    };
-
-    MediaRecorder.prototype._rawDataURL = function() {
+    MediaRecorder.prototype.encodedData = function() {
       return $.base64.encode(this.encoder.stream().getData());
     };
 

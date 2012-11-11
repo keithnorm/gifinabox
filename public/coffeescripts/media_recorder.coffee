@@ -34,10 +34,7 @@ class window.MediaRecorder
     cancelAnimationFrame(@currentRafId)
     @encoder.finish()
 
-  dataURL: ->
-    "data:image/gif;base64,#{ @_rawDataURL() }"
-
-  _rawDataURL: ->
+  encodedData: ->
     $.base64.encode(@encoder.stream().getData())
 
   _drawVideoFrame: =>

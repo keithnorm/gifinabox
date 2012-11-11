@@ -3,4 +3,4 @@ extends layout
 block content
   #gif
     a(href=gif.link())
-      img(src=gif.encodedData)
+      img(src=gif.get('url'))

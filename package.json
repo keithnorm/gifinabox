@@ -16,7 +16,8 @@
     "mongoose": "*",
     "jsdom": "*",
     "stylus": "*",
-    "hashids": "*"
+    "hashids": "*",
+    "knox": "*"
   },
   "engines": {
     "node": "0.8.x"

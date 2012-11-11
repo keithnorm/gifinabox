@@ -25,6 +25,10 @@
         this.bin = [];
       }
 
+      ByteArray.prototype.getBinaryData = function(){
+        return this.bin;
+      }
+
       ByteArray.prototype.getData = function(){
         
         for(var v = '', l = this.bin.length, i = 0; i < l; i++)

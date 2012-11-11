@@ -36,12 +36,10 @@
     };
 
     Recorder.prototype._stop = function() {
-      var data;
       enable(this.$startButton);
       this.recorder.stop();
-      data = this.recorder.dataURL();
-      this.$("#gif").attr('src', data);
-      return this.trigger("gif:create", data);
+      this.$("#gif").attr('src', "data:image/gif;base64," + (this.recorder.encodedData()));
+      return this.trigger("gif:create", this.recorder.encodedData());
     };
 
     disable = function($el) {
