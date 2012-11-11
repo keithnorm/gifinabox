@@ -1,3 +1,9 @@
+.message {
+  background-color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+}
 body,
 html {
   margin: 0;

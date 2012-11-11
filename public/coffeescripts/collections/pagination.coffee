@@ -12,6 +12,9 @@ class bs.collections.Pagination extends Backbone.Collection
 
     @view.on 'click:next', @_fetchNext
 
+    @gifsCollection.on "reset", =>
+      if @gifsCollection.isEmpty()
+        @view.trigger("pagination:empty")
 
   parse: (response) ->
     return if _.isEmpty(response.gifs)

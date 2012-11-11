@@ -20,13 +20,19 @@
     Pagination.prototype.urlRoot = '/p';
 
     Pagination.prototype.initialize = function(options) {
+      var _this = this;
       this.options = options != null ? options : {};
       this.gifsCollection = this.options.gifsCollection;
       this.view = new bs.views.Pagination({
         el: "#pagination"
       });
       this.view.render();
-      return this.view.on('click:next', this._fetchNext);
+      this.view.on('click:next', this._fetchNext);
+      return this.gifsCollection.on("reset", function() {
+        if (_this.gifsCollection.isEmpty()) {
+          return _this.view.trigger("pagination:empty");
+        }
+      });
     };
 
     Pagination.prototype.parse = function(response) {

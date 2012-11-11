@@ -17,6 +17,13 @@
       'click .next': 'next'
     };
 
+    Pagination.prototype.initialize = function() {
+      var _this = this;
+      return this.on("pagination:empty", function() {
+        return _this.$el.html("<p class='message'>You've seen all the gifs! <a href='/'>Go make some more.</a></p>");
+      });
+    };
+
     Pagination.prototype.render = function() {
       return this.$el.append(this.template);
     };
