@@ -75,7 +75,6 @@ canvas {
   height: 120px;
   width: 160px;
 }
-<<<<<<< HEAD
 #record {
   background: #cac5c5 url("/images/record.png") no-repeat center 6px;
   box-shadow: -1px -1px 7px rgba(0,0,0,0.7) inset;
@@ -100,7 +99,7 @@ canvas {
 #record.stop {
   background-image: url("/images/stop.png");
   background-color: #30812d;
-=======
+}
 #gif {
   width: 100%;
   margin-top: 100px;
@@ -110,5 +109,7 @@ canvas {
   margin: 0 auto;
   height: 240px;
   width: 320px;
->>>>>>> db0197f24773bd52810a83e687aa608e97756f9a
+}
+#recorder #gif {
+  margin-top: 0;
 }
