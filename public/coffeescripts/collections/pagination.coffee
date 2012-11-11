@@ -12,21 +12,12 @@ class bs.collections.Pagination extends Backbone.Collection
 
     @currentOffset = +(@options.offset ? 0)
 
-    @view.on 'click:prev', @_fetchPrev
     @view.on 'click:next', @_fetchNext
 
 
   parse: (response) ->
     @gifsCollection.reset(response.gifs)
     @currentOffset = response.offset
-
-  _fetchPrev: =>
-    params =
-      offset: @currentOffset - @GIFS_PER_PAGE
-
-    @url = @_contructUrl(params)
-
-    @fetch()
 
   _fetchNext: =>
     params =

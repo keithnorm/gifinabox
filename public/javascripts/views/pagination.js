@@ -11,20 +11,14 @@
       return Pagination.__super__.constructor.apply(this, arguments);
     }
 
-    Pagination.prototype.template = "<ul>\n  <li><a href=\"#\" class=\"prev\">prev</a>\n  <li><a href=\"#\" class=\"next\">next</a>\n</ul>";
+    Pagination.prototype.template = "<button href=\"#\" class=\"next\">Next Page</button>";
 
     Pagination.prototype.events = {
-      'click .prev': 'prev',
       'click .next': 'next'
     };
 
     Pagination.prototype.render = function() {
       return this.$el.append(this.template);
-    };
-
-    Pagination.prototype.prev = function(e) {
-      e.preventDefault();
-      return this.trigger('click:prev');
     };
 
     Pagination.prototype.next = function(e) {

@@ -5,7 +5,7 @@ html {
 }
 body {
   background: url("/images/wood2.png");
-  margin-bottom: 10px;
+  margin-bottom: 80px;
 }
 h1,
 h2,
@@ -186,18 +186,10 @@ canvas {
   height: 337px;
   z-index: 2;
 }
-#pagination ul {
+#pagination button {
+  cursor: pointer;
+  display: block;
+  line-height: 18px;
   margin: 20px auto;
-  width: 150px;
-  list-style: none;
-}
-#pagination ul li {
-  float: left;
-  margin-left: 20px;
-}
-#pagination ul li:first-child {
-  margin-left: 0;
-}
-#pagination ul li a {
-  font-size: 18px;
+  width: 100px;
 }

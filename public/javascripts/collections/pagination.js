@@ -12,8 +12,6 @@
       this._contructUrl = __bind(this._contructUrl, this);
 
       this._fetchNext = __bind(this._fetchNext, this);
-
-      this._fetchPrev = __bind(this._fetchPrev, this);
       return Pagination.__super__.constructor.apply(this, arguments);
     }
 
@@ -30,22 +28,12 @@
       });
       this.view.render();
       this.currentOffset = +((_ref = this.options.offset) != null ? _ref : 0);
-      this.view.on('click:prev', this._fetchPrev);
       return this.view.on('click:next', this._fetchNext);
     };
 
     Pagination.prototype.parse = function(response) {
       this.gifsCollection.reset(response.gifs);
       return this.currentOffset = response.offset;
-    };
-
-    Pagination.prototype._fetchPrev = function() {
-      var params;
-      params = {
-        offset: this.currentOffset - this.GIFS_PER_PAGE
-      };
-      this.url = this._contructUrl(params);
-      return this.fetch();
     };
 
     Pagination.prototype._fetchNext = function() {
