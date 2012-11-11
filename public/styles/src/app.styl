@@ -16,6 +16,7 @@ header
   background: -o-linear-gradient(top, #424242 0%,#000000 100%); /* Opera 11.10+ */
   background: -ms-linear-gradient(top, #424242 0%,#000000 100%); /* IE10+ */
   background: linear-gradient(to bottom, #424242 0%,#000000 100%); /* W3C */
+  margin-bottom: 10px
   padding: 10px 0
   
   h1
@@ -23,16 +24,39 @@ header
     box-shadow: 0 1px 1px rgba(0, 0, 0, .5)
     font-size: 24px
 
+
+.video
+  width: 450px
+  margin: 0 auto
+
 video
-  height: 240px
-  width: 320px
+  display: block
+  width: 450px
+  margin: 0 auto 10px
+
+.buttons
+
 
 canvas
   display: none
 
 #gifs
+  background: #fff
+  padding: 20px 20px 10px 20px
+  border-radius: 6px
+  box-shadow: 0 0 6px rgba(0, 0, 0, .7) inset
   list-style: none
+
+  & li:nth-child(6n)
+    margin-right: 0
 
   li, img
     float: left
+
+  li
+    margin: 0 10px 10px 0
+
+  img
+    height: 120px
+    width: 160px
 

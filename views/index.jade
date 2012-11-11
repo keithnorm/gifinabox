@@ -2,12 +2,14 @@ extends layout
 
 block content
   #recorder.row
-    video(autoplay=true)
+    .video
+      video(autoplay=true)
+      .buttons
+        button#record Record
+        button#stop ◼
     canvas
     img#gif
     input#link(type="text")
-    button#record Record
-    button#stop ◼
 
   ul#gifs.row
     - each gif in gifs
