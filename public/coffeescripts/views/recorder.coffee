@@ -11,6 +11,9 @@ class bs.views.Recorder extends Backbone.View
     disable(@$stopButton)
     enable(@$startButton)
 
+    @on 'gif:done', onSave
+    @on 'gif:fail', onError
+
     @recorder = new MediaRecorder
       video: @$("video")[0]
       canvas: @$("canvas")[0]
@@ -39,3 +42,10 @@ class bs.views.Recorder extends Backbone.View
 
   enable = ($el) ->
     $el.removeAttr('disabled')
+
+  onSave = (link) ->
+    $('#link').val(link)
+    alert("Your gif was created successfully!")
+
+  onError = ->
+    alert("We had some trouble saving your gif.")

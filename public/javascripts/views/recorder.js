@@ -4,7 +4,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   bs.views.Recorder = (function(_super) {
-    var disable, enable;
+    var disable, enable, onError, onSave;
 
     __extends(Recorder, _super);
 
@@ -22,6 +22,8 @@
       this.$stopButton = $('#stop');
       disable(this.$stopButton);
       enable(this.$startButton);
+      this.on('gif:done', onSave);
+      this.on('gif:fail', onError);
       return this.recorder = new MediaRecorder({
         video: this.$("video")[0],
         canvas: this.$("canvas")[0],
@@ -52,6 +54,15 @@
 
     enable = function($el) {
       return $el.removeAttr('disabled');
+    };
+
+    onSave = function(link) {
+      $('#link').val(link);
+      return alert("Your gif was created successfully!");
+    };
+
+    onError = function() {
+      return alert("We had some trouble saving your gif.");
     };
 
     return Recorder;
