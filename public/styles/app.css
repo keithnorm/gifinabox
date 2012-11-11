@@ -75,3 +75,13 @@ canvas {
   height: 120px;
   width: 160px;
 }
+#gif {
+  width: 100%;
+  margin-top: 100px;
+}
+#gif a {
+  display: block;
+  margin: 0 auto;
+  height: 240px;
+  width: 320px;
+}
