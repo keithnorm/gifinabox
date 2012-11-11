@@ -10,7 +10,7 @@ app.use(express.bodyParser())
 app.use express.static __dirname + '/public'
 
 app.get '/', (req, res) ->
-  Gif.find().limit(30).sort({ _id : -1 }).exec (err, gifs) =>
+  Gif.find().limit(18).sort({ _id : -1 }).exec (err, gifs) =>
     res.render 'index.jade', { gifs: gifs }
 
 app.get '/gifs/:slug', (req, res) ->

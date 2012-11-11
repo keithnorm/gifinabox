@@ -7,7 +7,6 @@ class bs.views.Recorder extends Backbone.View
 
   initialize: ->
     @$startButton = $('#record')
-    enable(@$startButton)
 
     @on 'gif:uploading', this._uploadStart.bind(this)
     @on 'gif:done', onSave
@@ -18,6 +17,9 @@ class bs.views.Recorder extends Backbone.View
       canvas: @$("canvas")[0]
       height: 240  # px
       width: 320  # px
+
+    @recorder.on 'camera:ready', => enable(@$startButton)
+
 
   _record: ->
     @$("video").hide()
@@ -53,7 +55,7 @@ class bs.views.Recorder extends Backbone.View
     $el.attr('class', 'stop')
 
   enable = ($el) ->
-    $el.removeClass('stop').removeClass('uploading')
+    $el.removeAttr('disabled').removeClass('stop').removeClass('uploading')
 
   onSave = (gif) ->
     $('#link').attr('href', gif.link()).text(gif.link())

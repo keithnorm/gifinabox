@@ -21,6 +21,8 @@
 
   window.MediaRecorder = (function() {
 
+    _(MediaRecorder.prototype).extend(Backbone.Events);
+
     function MediaRecorder(opts) {
       this._setupVideo = __bind(this._setupVideo, this);
 
@@ -66,6 +68,7 @@
       return navigator.getUserMedia({
         video: true
       }, function(stream) {
+        _this.trigger("camera:ready");
         _this.video.src = URL.createObjectURL(stream);
         return _this.ctx.drawImage(_this.video, 0, 0, _this.canvas.width, _this.canvas.height);
       });

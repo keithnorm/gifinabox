@@ -6,6 +6,8 @@ navigator.getUserMedia ?= navigator.webkitGetUserMedia || navigator.mozGetUserMe
 
 class window.MediaRecorder
 
+  _(@prototype).extend(Backbone.Events)
+
   constructor: (opts) ->
     @video = opts.video
     @canvas = opts.canvas
@@ -44,6 +46,7 @@ class window.MediaRecorder
 
   _setupVideo: =>
     navigator.getUserMedia { video: true }, (stream) =>
+      @trigger("camera:ready")
       @video.src = URL.createObjectURL(stream)
       @ctx.drawImage(@video, 0, 0, @canvas.width, @canvas.height)
 

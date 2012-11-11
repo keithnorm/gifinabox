@@ -19,16 +19,19 @@
     };
 
     Recorder.prototype.initialize = function() {
+      var _this = this;
       this.$startButton = $('#record');
-      enable(this.$startButton);
       this.on('gif:uploading', this._uploadStart.bind(this));
       this.on('gif:done', onSave);
       this.on('gif:fail', onError);
-      return this.recorder = new MediaRecorder({
+      this.recorder = new MediaRecorder({
         video: this.$("video")[0],
         canvas: this.$("canvas")[0],
         height: 240,
         width: 320
+      });
+      return this.recorder.on('camera:ready', function() {
+        return enable(_this.$startButton);
       });
     };
 
@@ -71,7 +74,7 @@
     };
 
     enable = function($el) {
-      return $el.removeClass('stop').removeClass('uploading');
+      return $el.removeAttr('disabled').removeClass('stop').removeClass('uploading');
     };
 
     onSave = function(gif) {

@@ -105,6 +105,7 @@ canvas {
   box-shadow: -1px -1px 7px rgba(0,0,0,0.7) inset;
   border: none;
   color: #000;
+  cursor: pointer;
   font-size: 26px;
   height: 36px;
   -webkit-border-radius: 4px;
@@ -116,6 +117,14 @@ canvas {
   width: 100%;
   overflow: hidden;
   text-indent: -9999px;
+}
+#record[disabled] {
+  cursor: default;
+  opacity: 0.3;
+}
+#record[disabled]:active {
+  box-shadow: -1px -1px 7px rgba(0,0,0,0.7) inset;
+  background-position: center 6px;
 }
 #record:active {
   box-shadow: 0px 0px 7px rgba(0,0,0,0.7) inset;
