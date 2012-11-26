@@ -25,6 +25,7 @@
   "devDependencies": {
     "wach": "~0.9.1"
   },
+  "subdomain": "just-name-it-beansna.nko3",
   "domains": [
     "gifinabox.com",
     "www.gifinabox.com"
