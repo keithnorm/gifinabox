@@ -1,6 +1,6 @@
 {
   "name": "nko3-just-name-it-beansna",
-  "version": "0.0.0-37",
+  "version": "0.0.0-48",
   "description": "Just Name it Beansnappers",
   "scripts": {
     "start": "coffee server.coffee"
@@ -29,6 +29,5 @@
   "domains": [
     "gifinabox.com",
     "www.gifinabox.com"
-
   ]
 }

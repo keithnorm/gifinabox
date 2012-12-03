@@ -30,7 +30,7 @@ app.get '/p', (req, res) ->
     limit = req.query.limit || DEFAULT_BATCH_SIZE
     offset = +req.query.offset + limit
 
-    Gif.find().skip(offset).limit(limit).exec (err, gifs) ->
+    Gif.find().sort({ _id : -1 }).skip(offset).limit(limit).exec (err, gifs) ->
       res.json { count, gifs, offset }
 
 server = app.listen(3000)
