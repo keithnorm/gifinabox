@@ -5,6 +5,9 @@ express = require('express')
 Gif = require('./gif')
 
 app = express()
+
+app.set 'views', __dirname + '/views'
+
 app.use(express.bodyParser())
 
 app.use express.static __dirname + '/public'
