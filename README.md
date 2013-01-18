@@ -1,1 +1,1 @@
-[Gif In A Box](http://www.gifinabox.com)
+[Gif In A Box](http://gifinabox.com)
